@@ -30,7 +30,7 @@ jobs:
       - name: Plan Terraform changes
         run: |
             cd terraform
-             terraform plan -out=tfplan -var-file=main.tf
+             terraform plan -out=tfplan 
         env:
           TF_LOG: TRACE  # Set Terraform log level to get detailed output
       
