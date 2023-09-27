@@ -23,14 +23,20 @@ jobs:
           terraform_version: 1.0.0  # Adjust to your preferred version
 
       - name: Initialize Terraform
-        run: terraform init
+        run: |
+            cd terraform
+            terraform init
 
       - name: Plan Terraform changes
-        run: terraform plan -out=tfplan -var-file=main.tf
+        run: |
+            cd terraform
+             terraform plan -out=tfplan -var-file=main.tf
         env:
           TF_LOG: TRACE  # Set Terraform log level to get detailed output
       
       - name: Apply Terraform changes
-        run: terraform apply -auto-approve tfplan
+        run: |
+            cd terraform
+             terraform apply -auto-approve tfplan
         env:
           TF_LOG: TRACE  # Set Terraform log level to get detailed output
